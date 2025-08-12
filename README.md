@@ -28,14 +28,14 @@ The contract's ABI was automatically handled by Scaffold Lisk, making developmen
 Live Demo
 The entire DApp is hosted live on Vercel!
 
-Live App: https://scaffold-lisk-nextjs-qmxk.vercel.app/
+Live App: [https://scaffold-lisk-nextjs-qmxk.vercel.app/](https://scaffold-lisk-nextjs-nine.vercel.app/)
 
 🛠️ How to Run Locally
 1. Fork & Clone
 First, fork the repository on GitHub, and then clone your fork to your local machine.
 
 # Clone your forked repository
-git clone [https://github.com/phertyameen/scaffold-lisk.git](https://github.com/phertyameen/scaffold-lisk.git)
+git clone [https://github.com/portableDD/scaffold-lisk.git](https://github.com/portableDD/scaffold-lisk.git)
 cd scaffold-lisk
 
 # Create and switch to a new branch for your work
