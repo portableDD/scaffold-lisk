@@ -1,115 +1,84 @@
-<div align="left">
-  <a href="https://lisk.com"><img alt="Lisk" src="./packages/nextjs/public/readme-banner.png" width="100%"></a>
-</div>
+🎉 Scaffold Lisk Birthday Party DApp 🎉
+This repository contains a decentralized application (DApp) built using the Scaffold Lisk template. Instead of a simple guestbook, I've created a fun Birthday Party Guest List to demonstrate how to deploy and interact with a smart contract on the Lisk blockchain.
 
-<br />
+🎂 Project Overview
+The main goal was to learn the fundamentals of Scaffold Lisk by building a complete DApp. This involved:
 
-Scaffold-Lisk is a fork of Scaffold-OP with minimal differences, providing additional dApp examples, native support for Superchain testnets, and more low-level instructions. We highly recommend the Scaffold-ETH2 docs as the primary guideline.
+Forking the official Scaffold Lisk project.
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+Creating a development branch to manage my work.
 
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
+Developing and deploying a custom "BirthdayPartyGuest" smart contract to the Lisk Sepolia testnet.
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+Building a user-friendly frontend that allows users to RSVP for the party and view the guest list.
 
-<div align="center" style="margin-top: 24px;">
-  <img alt="App demo" src="./packages/nextjs/public/scaffold-lisk-landing.png" width="100%">
-</div>
+Hosting the final project on Vercel for anyone to see and interact with.
 
-## Requirements
+🚀 My Solution
+Smart Contract
+I wrote a simple BirthdayPartyGuest smart contract in Solidity. It allows party-goers to add their name and a birthday message to the guest list. The contract securely stores each RSVP entry, including the guest's address and a timestamp.
 
-Before you begin, you need to install the following tools:
+Frontend Integration
+I used the powerful Scaffold Lisk hooks (useScaffoldContractRead and useScaffoldContractWrite) to seamlessly connect the frontend to the blockchain.
 
-- [Node (>= v18.17)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+The UI provides a simple form for users to RSVP and displays all current guests in a clean, real-time list.
 
-## Quickstart
+The contract's ABI was automatically handled by Scaffold Lisk, making development incredibly fast.
 
-To get started with Scaffold-Lisk, follow the steps below:
+Live Demo
+The entire DApp is hosted live on Vercel!
 
-1. Clone this repo & install dependencies
+Live App: https://scaffold-lisk-nextjs-qmxk.vercel.app/
 
-```
-git clone https://github.com/LiskHQ/scaffold-lisk.git
+🛠️ How to Run Locally
+1. Fork & Clone
+First, fork the repository on GitHub, and then clone your fork to your local machine.
+
+# Clone your forked repository
+git clone [https://github.com/phertyameen/scaffold-lisk.git](https://github.com/phertyameen/scaffold-lisk.git)
 cd scaffold-lisk
+
+# Create and switch to a new branch for your work
+git checkout -b my-birthday-party-feature
+
+2. Install Dependencies
 yarn install
-```
 
-2. Run a local network in the first terminal:
+3. Configure Environment
+Create a .env file in the root of your project and add your wallet's private key and the Lisk Sepolia RPC URL.
 
-```
-yarn chain
-```
+# Example for Hardhat deployment
+PRIVATE_KEY="your-wallet-private-key"
+RPC_URL="[https://rpc.sepolia-api.lisk.com](https://rpc.sepolia-api.lisk.com)"
 
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `hardhat.config.ts`.
+4. Compile & Deploy
+Compile and deploy the smart contract to the Lisk Sepolia testnet.
 
-3. On a second terminal, deploy the test contract:
+# Compile the contract
+yarn hardhat compile
 
-```
-yarn deploy
-```
+# Deploy the contract
+yarn hardhat run scripts/deploy.ts --network sepolia
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
+5. Run the Frontend
+yarn dev
 
-4. On the same terminal, start your NextJS app:
+Visit http://localhost:3000 in your browser to see the app in action!
 
-```
-yarn start
-```
+🧗‍♀️ Challenges Faced
+Insufficient Funds: Ran into errors when sending transactions because my wallet didn't have enough testnet LSK to cover gas fees. A gift from a friend fix that!
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+Network Configuration: Ensuring the correct RPC endpoints and network settings were configured for the Lisk Sepolia testnet required some trial and error.
 
-Run smart contract test with `yarn hardhat:test`
+Async Operations: Debugging the flow between the frontend and the smart contract took some effort, especially managing loading states and handling asynchronous transaction confirmations.
 
-- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
-- Edit your frontend in `packages/nextjs/pages`
-- Edit your deployment scripts in `packages/hardhat/deploy`
+Despite the challenges, it was a fantastic learning experience! 🥳
 
-## Deploy Contracts to Superchain Testnet(s)
+✍️ Author
+GitHub: @PortableDD
 
-To deploy contracts to a remote testnet (e.g. Optimism Sepolia), follow the steps below:
+LinkedIn: Emmanuel Dorcas
 
-1. Get Superchain Sepolia ETH from the [Superchain Faucet](https://app.optimism.io/faucet)
+Farcaster: @portabledd
 
-2. Inside the `packages/hardhat` directory, copy `.env.example` to `.env`.
-
-   ```bash
-   cd packages/hardhat && cp .env.example .env
-   ```
-
-3. Edit your `.env` to specify the environment variables. Only specifying the `DEPLOYER_PRIVATE_KEY` is necessary here. The contract will be deployed from the address associated with this private key, so make sure it has enough Sepolia ETH.
-
-   ```bash
-   DEPLOYER_PRIVATE_KEY = "your_private_key_with_sepolia_ETH";
-   ```
-
-4. Inside `scaffold-lisk`, run
-
-   ```bash
-   yarn deploy --network-options
-   ```
-
-   Use spacebar to make your selection(s). This command deploys all smart contracts in `packages/hardhat/contracts` to the selected network(s). Alternatively, you can try
-
-   ```bash
-   yarn deploy --network networkName
-   ```
-
-   Network names are found in `hardhat.config.js`. Please ensure you have enough Sepolia ETH on all these Superchains. If the deployments are successful, you will see the deployment tx hash on the terminal.
-
-## Adding Foundry
-
-Hardhat's NodeJS stack and cleaner deployment management makes it a better default for Scaffold-Lisk.
-
-To add Foundry to Scaffold-Lisk, follow this simple [tutorial](https://hardhat.org/hardhat-runner/docs/advanced/hardhat-and-foundry) by Hardhat. We recommend users who want more robust and faster testing to add Foundry.
-
-## Documentation
-
-We highly recommend visiting the original [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
-
-To know more about its features, check out their [website](https://scaffoldeth.io).
+Thank you for checking out my project! Feel free to reach out with any questions.
